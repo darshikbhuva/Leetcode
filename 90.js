@@ -1,9 +1,11 @@
 var subsets = function (nums) {
-  const result = [];
+  let result = new Set();
+
+  nums.sort((a, b) => a - b);
 
   function solve(idx, temp) {
     if (idx >= nums.length) {
-      result.push([...temp]);
+      result.add(JSON.stringify(temp));
       return;
     }
 
@@ -18,5 +20,8 @@ var subsets = function (nums) {
 
   solve(0, []);
 
-  return result;
+  return Array.from(result).map(JSON.parse);
 };
+
+let nums = [1, 2, 2];
+console.log(subsets(nums));
