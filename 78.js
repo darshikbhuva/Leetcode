@@ -20,3 +20,21 @@ var subsets = function (nums) {
 
   return result;
 };
+
+//backtracking
+function subsets(nums) {
+  let result = [];
+
+  const backtracking = (path, start) => {
+    path.push([...path]);
+
+    for (let i = start; i < nums.length; i++) {
+      path.push(nums[i]);
+      backtracking(path, i + 1);
+      path.pop();
+    }
+  };
+  backtracking([], 0);
+
+  return result;
+}

@@ -25,3 +25,28 @@ var subsets = function (nums) {
 
 let nums = [1, 2, 2];
 console.log(subsets(nums));
+
+//backtracking
+
+function subsets(nums) {
+  let result = new Set();
+  nums = nums.sort((a, b) => a - b);
+
+  const backtracking = (path, start) => {
+    if (result.has(JSON.stringify(path))) {
+      return;
+    } else {
+      result.add(JSON.stringify(path));
+    }
+
+    for (let i = start; i < nums.length; i++) {
+      path.push(nums[i]);
+      backtracking(path, i + 1);
+      path.pop();
+    }
+  };
+
+  backtracking([], 0);
+
+  return Array.from(result).map(JSON.parse);
+}
