@@ -1,15 +1,15 @@
 let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 function maxSubArray(nums) {
-  let cur_max = nums[0];
-  let max_so_far = nums[0];
+  let currSum = nums[0];
+  let result = nums[0];
 
-  for (i = 1; i < nums.length; i++) {
-    cur_max = Math.max(nums[i], nums[i] + cur_max);
-    max_so_far = Math.max(max_so_far, cur_max);
+  for (let i = 1; i < nums.length; i++) {
+    currSum = Math.max(currSum + nums[i], nums[i]);
+    result = Math.max(currSum, result);
   }
 
-  return max_so_far;
+  return result;
 }
 
 console.log(maxSubArray(nums));
